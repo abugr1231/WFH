@@ -1,0 +1,366 @@
+
+import React from "react";
+import { motion } from "framer-motion";
+import { HeartHandshake, Bike, Users, HandCoins, ArrowRight, Building2, Target, ShieldCheck, Calendar, MapPin, Mail, Phone, ExternalLink, CheckCircle2, Sparkles } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+// --- Helpers ---
+const Section = ({ id, children, className = "" }) => (
+  <section id={id} className={`scroll-mt-24 py-16 md:py-24 ${className}`}>{children}</section>
+);
+
+const Container = ({ children, className = "" }) => (
+  <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>
+);
+
+const Stat = ({ kpi, label }) => (
+  <div className="text-center">
+    <div className="text-4xl md:text-5xl font-extrabold tracking-tight">{kpi}</div>
+    <div className="mt-1 text-sm md:text-base text-muted-foreground">{label}</div>
+  </div>
+);
+
+const Pill = ({ children }) => (
+  <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm bg-background/70 backdrop-blur">
+    {children}
+  </span>
+);
+
+const Anchor = ({ href, children }) => (
+  <a href={href} className="inline-flex items-center gap-2 font-medium hover:underline">
+    {children} <ArrowRight className="h-4 w-4" />
+  </a>
+);
+
+// --- Page ---
+export default function WFH() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-background text-foreground">
+      {/* Nav */}
+      <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
+        <Container className="flex h-16 items-center justify-between">
+          <a href="#home" className="flex items-center gap-3">
+            <div className="grid h-9 w-9 place-content-center rounded-xl border">
+              <Bike className="h-5 w-5" />
+            </div>
+            <div className="text-lg font-bold tracking-tight">Wheeling for Healing</div>
+          </a>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#mission" className="hover:underline">Mission</a>
+            <a href="#impact" className="hover:underline">Impact</a>
+            <a href="#stories" className="hover:underline">Stories</a>
+            <a href="#programs" className="hover:underline">Programs</a>
+            <a href="#ride" className="hover:underline">Flagship Ride</a>
+            <a href="#get-involved" className="hover:underline">Get Involved</a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <Button asChild size="sm" variant="ghost" className="hidden sm:inline-flex">
+              <a href="#newsletter">Newsletter</a>
+            </Button>
+            <Button asChild size="sm" className="shadow">
+              <a href="#donate">Donate</a>
+            </Button>
+          </div>
+        </Container>
+      </header>
+
+      {/* Hero */}
+      <Section id="home" className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="pointer-events-none absolute left-1/2 top-[-10%] -translate-x-1/2 h-[800px] w-[1400px] rounded-full bg-primary/10 blur-3xl" />
+        </div>
+        <Container>
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <Pill>
+                <Sparkles className="h-4 w-4" />
+                501(c)(3) • Founded 2025 • Multiple Myeloma
+              </Pill>
+              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+                Every mile powers hope. Every dollar fuels healing.
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-prose">
+                Born from a 3,100-mile ride for a friend, Wheeling for Healing (WFH) delivers urgent aid to patients and strategic funding for research and treatment infrastructure—so no one faces multiple myeloma alone.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild size="lg" className="shadow">
+                  <a href="#donate"><HandCoins className="mr-2 h-5 w-5"/>Donate now</a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href="#get-involved"><Users className="mr-2 h-5 w-5"/>Volunteer</a>
+                </Button>
+                <Button asChild size="lg" variant="ghost">
+                  <a href="#ride"><Bike className="mr-2 h-5 w-5"/>Join the Flagship Ride</a>
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-3 pt-2 text-sm text-muted-foreground">
+                <Pill><Target className="h-4 w-4"/> Patient Aid</Pill>
+                <Pill><ShieldCheck className="h-4 w-4"/> Research</Pill>
+                <Pill><Building2 className="h-4 w-4"/> Treatment Centers</Pill>
+                <Pill><Users className="h-4 w-4"/> Community</Pill>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] w-full rounded-2xl border bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-1">
+                <div className="h-full w-full rounded-2xl bg-background grid place-content-center text-center p-8">
+                  <Bike className="mx-auto h-16 w-16 mb-4"/>
+                  <p className="text-xl font-semibold">St. George Flagship Ride • May 2025</p>
+                  <p className="text-muted-foreground">Scenic routes, community energy, and cause-driven fundraising.</p>
+                  <div className="mt-4">
+                    <Anchor href="#ride">Explore the ride</Anchor>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Impact Stats */}
+      <Section id="impact" className="bg-muted/30">
+        <Container>
+          <div className="grid gap-8 md:grid-cols-4">
+            <Stat kpi="$110k+" label="Raised on inaugural ride"/>
+            <Stat kpi="3" label="Hospitals supported"/>
+            <Stat kpi="40+" label="Patients helped with urgent aid"/>
+            <Stat kpi="3,100" label="Miles ridden for hope"/>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Mission */}
+      <Section id="mission">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Mission, Vision & Story</h2>
+              <p className="text-muted-foreground">
+                <strong>Mission:</strong> Deliver urgent financial relief and strategic funding to accelerate better outcomes for people impacted by multiple myeloma.
+              </p>
+              <p className="text-muted-foreground">
+                <strong>Vision:</strong> A world where those impacted have timely access to resources, care, and breakthroughs they need to thrive.
+              </p>
+              <p className="text-muted-foreground">
+                In 2024, friends of Chris Seab—including founders Burke Moran, Robert Guba, and Mike Jastram—pedaled coast to coast to fight back. That act of solidarity sparked a registered nonprofit in 2025 and a growing movement powered by riders, donors, and volunteers.
+              </p>
+              <div className="flex gap-4">
+                <Anchor href="#stories">Read impact stories</Anchor>
+                <Anchor href="#programs">See our programs</Anchor>
+              </div>
+            </div>
+            <Card className="border-dashed">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold">Core values</h3>
+                <ul className="mt-4 grid gap-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5"/> Integrity & empathy</li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5"/> Measurable impact</li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5"/> Stewardship of every dollar</li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5"/> Community first</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Stories */}
+      <Section id="stories" className="bg-muted/30">
+        <Container>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Real lives changed</h2>
+          <p className="mt-3 text-muted-foreground max-w-prose">From immediate aid for underinsured families to support for breakthrough research, your gifts turn into outcomes that matter. Here are a few snapshots (anonymized for privacy). Replace these with your real stories & photos.</p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {[1,2,3].map((i)=> (
+              <Card key={i}>
+                <CardContent className="p-6">
+                  <div className="aspect-[4/3] w-full rounded-lg bg-muted"/>
+                  <h3 className="mt-4 text-lg font-semibold">Patient Aid Microgrant</h3>
+                  <p className="text-sm text-muted-foreground">"We could travel for a clinical consult without choosing between rent and care."</p>
+                  <div className="mt-3 text-sm"><Anchor href="#donate">Fund more aid</Anchor></div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Programs / Pillars */}
+      <Section id="programs">
+        <Container>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">What your support powers</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {icon: <Target className="h-6 w-6"/>, title: "Patient Aid & Emergency Relief", body: "$500–$2,000 microgrants for travel, lodging, and uncovered costs."},
+              {icon: <ShieldCheck className="h-6 w-6"/>, title: "Advancing Research", body: "High-impact projects at leading centers (e.g., UAMS Myeloma Cure Project)."},
+              {icon: <Building2 className="h-6 w-6"/>, title: "Treatment Infrastructure", body: "Grants for equipment, facility upgrades, and professional development."},
+              {icon: <Users className="h-6 w-6"/>, title: "Public Engagement", body: "Events, storytelling, and ambassadors to grow a supportive community."},
+            ].map((p, idx) => (
+              <Card key={idx}>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3">
+                    {p.icon}
+                    <h3 className="text-lg font-semibold">{p.title}</h3>
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">{p.body}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold">Our growth roadmap</h3>
+                <ul className="mt-3 text-sm text-muted-foreground space-y-2">
+                  <li>Phase I (2025–2026): Build systems, launch patient aid, solidify fundraising.</li>
+                  <li>Phase II (2026–2027): Scale programs and pilot expansions.</li>
+                  <li>Phase III (2027–2028): Full integration with staffed ops and dashboards.</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold">2027 funding goal</h3>
+                <p className="mt-2 text-sm text-muted-foreground">$775,000 annually with 80%+ to mission areas via P2P fundraising, corporate partners, major donors, and foundations.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold">Transparency</h3>
+                <p className="mt-2 text-sm text-muted-foreground">Annual reports, impact dashboards, and grantee highlights will be published here.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Flagship Ride */}
+      <Section id="ride" className="bg-muted/30">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">St. George Flagship Ride</h2>
+              <p className="mt-3 text-muted-foreground">A destination cycling weekend in St. George, Utah—family-friendly routes, peer-to-peer fundraising, and community celebration. Proceeds support St. George Regional Hospital and national patient aid and research.</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild>
+                  <a href="#register"><Bike className="mr-2 h-5 w-5"/>Register to ride</a>
+                </Button>
+                <Button asChild variant="outline">
+                  <a href="#volunteer"><Users className="mr-2 h-5 w-5"/>Volunteer at the ride</a>
+                </Button>
+                <Button asChild variant="ghost">
+                  <a href="#sponsor"><HeartHandshake className="mr-2 h-5 w-5"/>Become a sponsor</a>
+                </Button>
+              </div>
+              <ul className="mt-6 grid gap-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2"><Calendar className="h-4 w-4"/> May 2025 (exact dates TBA)</li>
+                <li className="flex items-center gap-2"><MapPin className="h-4 w-4"/> St. George, Utah</li>
+                <li className="flex items-center gap-2"><Users className="h-4 w-4"/> Riders • Volunteers • Sponsors • Families</li>
+              </ul>
+            </div>
+            <Card>
+              <CardContent className="p-6">
+                <div className="aspect-video w-full rounded-lg bg-muted" />
+                <div className="mt-4 grid gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between"><span>2027 ride revenue (goal)</span><span>$375,000</span></div>
+                  <div className="flex items-center justify-between"><span>Corporate sponsorships</span><span>$37,500</span></div>
+                  <div className="flex items-center justify-between"><span>Major donors & foundations</span><span>$362,500</span></div>
+                </div>
+                <div className="mt-4"><Anchor href="#prospectus">View prospectus (PDF)</Anchor></div>
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Get Involved */}
+      <Section id="get-involved">
+        <Container>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Get involved</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-4">
+            {[{
+              title: "Donate",
+              body: "Fuel microgrants, research, and treatment center upgrades.",
+              href: "#donate",
+              cta: "Give now",
+            },{
+              title: "Volunteer",
+              body: "Join event crews, logistics, rider support, or grant review.",
+              href: "#volunteer",
+              cta: "Sign up",
+            },{
+              title: "Partner",
+              body: "Sponsor the ride, match gifts, or co-host community events.",
+              href: "#sponsor",
+              cta: "Start a partnership",
+            },{
+              title: "Ride",
+              body: "Register solo or with a team and fundraise mile by mile.",
+              href: "#register",
+              cta: "Register",
+            }].map((c, i)=> (
+              <Card key={i}>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold">{c.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{c.body}</p>
+                  <div className="mt-3"><Anchor href={c.href}>{c.cta}</Anchor></div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Newsletter / Contact */}
+      <Section id="newsletter" className="bg-muted/30">
+        <Container>
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Stay in the loop</h2>
+              <p className="mt-3 text-muted-foreground">Get ride updates, impact stories, and ways to help. No spam—just meaningful moments.</p>
+              <form className="mt-6 grid gap-3 max-w-md">
+                <Input placeholder="Email address" type="email" required />
+                <Button type="submit" className="w-full">Subscribe</Button>
+                <p className="text-xs text-muted-foreground">By subscribing you agree to receive email updates from WFH.</p>
+              </form>
+            </div>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold">Contact</h3>
+                <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2"><Mail className="h-4 w-4"/> <a href="mailto:burke.moran@ribandchophouse.com" className="hover:underline">burke.moran@ribandchophouse.com</a></li>
+                  <li className="flex items-center gap-2"><Phone className="h-4 w-4"/> <a href="tel:+14064519192" className="hover:underline">406-451-9192</a></li>
+                  <li className="flex items-center gap-2"><ExternalLink className="h-4 w-4"/> <a href="https://wheelingforhealing.com" className="hover:underline">wheelingforhealing.com</a></li>
+                </ul>
+                <div className="mt-4 text-sm"><Anchor href="#prospectus">Download strategic plan</Anchor></div>
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Footer */}
+      <footer className="border-t py-10">
+        <Container className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Wheeling for Healing • EIN: 501(c)(3)</p>
+          <div className="flex gap-4 text-sm">
+            <a href="#privacy" className="hover:underline">Privacy</a>
+            <a href="#terms" className="hover:underline">Terms</a>
+            <a href="#brand" className="hover:underline">Brand assets</a>
+          </div>
+        </Container>
+      </footer>
+    </div>
+  );
+}
